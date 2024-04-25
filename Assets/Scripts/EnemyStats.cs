@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 
 public class EnemyStats : MonoBehaviour
@@ -14,6 +15,8 @@ public class EnemyStats : MonoBehaviour
     [SerializeField]
     private float maxHp;
     private float currentHp;
+    [SerializeField]
+    Light spotlight;
 
 
     [SerializeField]
@@ -39,9 +42,9 @@ public class EnemyStats : MonoBehaviour
         CurrentHp = maxHp;
     }
 
-    public void SetType(Material color, int damage)
+    public void SetType(Color color, int damage)
     {
-        meshRenderer.material = color;
+        spotlight.color = color;
         this.damage = damage;
     }
 

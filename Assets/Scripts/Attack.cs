@@ -34,10 +34,13 @@ public class Attack : MonoBehaviour
         {
             Ray ray = VytvorRay();
 
-            if (Physics.Raycast(ray, out RaycastHit hit, 150f))
+            if (Physics.Raycast(ray, out RaycastHit hit, 1500f))
             {
-                if(hit.collider.gameObject.GetComponentInParent<EnemyStats>())
+                Debug.Log(hit.point);
+                Debug.DrawLine(ray.origin, hit.point,Color.red);
+                if (hit.collider.gameObject.GetComponentInParent<EnemyStats>())
                 {
+                    
                     var enemy = hit.collider.GetComponentInParent<EnemyStats>();
 
                     enemy.TakeDamage(10);

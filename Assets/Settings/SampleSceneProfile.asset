@@ -37,7 +37,6 @@ MonoBehaviour:
   dirtTexture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
-    dimension: 1
   dirtIntensity:
     m_OverrideState: 0
     m_Value: 0
@@ -90,7 +89,7 @@ MonoBehaviour:
     m_Value: 0
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 0.7783019, g: 0.854638, b: 1, a: 1}
+    m_Value: {r: 0.53266287, g: 0.64367825, b: 0.8490566, a: 1}
   hueShift:
     m_OverrideState: 0
     m_Value: 0

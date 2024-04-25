@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         StartCoroutine(SpawnEnemies());
     }
 
@@ -97,7 +98,7 @@ public class GameManager : MonoBehaviour
         var enemy = Instantiate(GetRandomPrefab(), GetRandomSpawnPoint(), Quaternion.identity);
         var color = GetColorForEnemy();
         var stats = enemy.GetComponent<EnemyStats>();
-        stats.SetType(color.enemyColor, color.damage);
+        stats.SetType(color.enemyColor.color, color.damage);
     }
 
     private EnemyMovement GetRandomPrefab()
@@ -134,11 +135,11 @@ public class GameManager : MonoBehaviour
         if (timeAlive > bestTime)
         {
             PlayerPrefs.SetFloat("Level1", timeAlive);
-            timeText.text = "New record: " + timeAlive + " seconds!";
+            timeText.text = "Nový rekord: " + timeAlive + " sec!";
         }
         else
         {
-            timeText.text = timeAlive + " seconds";
+            timeText.text = "Pøežil jsi: " + timeAlive + " sec";
         }
 
 
