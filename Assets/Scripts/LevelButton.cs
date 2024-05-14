@@ -22,7 +22,7 @@ public class LevelButton : MonoBehaviour
     public void SetData(string name)
     {
         levelName.text = name;
-        bestTime.text = "Best Time\n" + (PlayerPrefs.HasKey(name) ? PlayerPrefs.GetFloat(name).ToString() : "N/A");
+        bestTime.text = "Best Time\n" + (PlayerPrefs.HasKey(name) ? ((int)PlayerPrefs.GetFloat(name)).ToString() : "N/A");
         var btn = GetComponent<Button>();
         btn.onClick.AddListener(LoadLevel);
     }

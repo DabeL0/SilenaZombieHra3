@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Internal;
+
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
@@ -17,8 +17,6 @@ public class EnemyStats : MonoBehaviour
     private float currentHp;
     [SerializeField]
     Light spotlight;
-
-
     [SerializeField]
     private Image hpBar;
 

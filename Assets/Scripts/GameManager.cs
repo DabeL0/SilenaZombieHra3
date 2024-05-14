@@ -39,16 +39,20 @@ public class GameManager : MonoBehaviour
     private float spawnInterval;
 
     private float timeAlive = 0;
-
+    
     
     [SerializeField]
     private TMP_Text bodyText;
     public int bodiky;
+    [SerializeField]
+    Animator ani;
+    [SerializeField]
+    string levelName;
 
     private void Awake()
     {
         Instance = this;
-        PlayerPrefs.SetInt("bodiky", 1000);
+       
         bodiky = PlayerPrefs.GetInt("bodiky");
         NactiBody();
         for(int i = 0; i < spawnPointsParent.childCount; i++)
@@ -80,6 +84,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
+      
+        Debug.Log(ani);
         StartCoroutine(SpawnEnemies());
     }
 
@@ -131,15 +137,15 @@ public class GameManager : MonoBehaviour
         NactiBody();
         Time.timeScale = 0;
         endGameScreen.SetActive(true);
-        float bestTime = PlayerPrefs.GetFloat("Level1", 0f);
+        float bestTime = PlayerPrefs.GetFloat(levelName, 0f);
         if (timeAlive > bestTime)
         {
-            PlayerPrefs.SetFloat("Level1", timeAlive);
-            timeText.text = "Nový rekord: " + timeAlive + " sec!";
+            PlayerPrefs.SetFloat(levelName, timeAlive);
+            timeText.text = "New record: " + (int)timeAlive + " sec!";
         }
         else
         {
-            timeText.text = "Pøežil jsi: " + timeAlive + " sec";
+            timeText.text = "You survived: " + (int)timeAlive + " sec";
         }
 
 
@@ -154,13 +160,16 @@ public class GameManager : MonoBehaviour
 
     public void NactiBody()
     {
-        bodyText.text = "Body: " + bodiky;
+        bodyText.text = "Points: " + bodiky;
+       ani.SetTrigger("Bop");
+       
+       
     }
 
     public void ReturnToMenu()
     {
        // SceneManager.LoadScene("Menu");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Menu");
     }
 }
 
